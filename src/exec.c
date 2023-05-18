@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:55:06 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/05/19 00:16:44 by cchabeau         ###   ########.fr       */
+/*   Updated: 2023/05/19 00:18:32 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	exec(t_pipex *pipex, char **env)
 		ft_error(pipex, ERR_FORK_FAIL);
 	if (pipex->pid[0] == 0)
 		exec_cmd1(pipex, env, fd);
-	waitpid(pipex->pid[0], NULL, 0);
 	pipex->pid[1] = fork();
 	if (pipex->pid[1] == -1)
 		ft_error(pipex, ERR_FORK_FAIL);
@@ -68,4 +67,6 @@ void	exec(t_pipex *pipex, char **env)
 		exec_cmd2(pipex, env, fd);
 	close(fd[0]);
 	close(fd[1]);
+	waitpid(pipex->pid[0], NULL, 0);
+	waitpid(pipex->pid[1], NULL, 0);
 }
