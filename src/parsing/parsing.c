@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:56:42 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/05/18 09:11:33 by cchabeau         ###   ########.fr       */
+/*   Updated: 2023/05/19 00:11:13 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,8 @@ static t_cmd *parse_cmd(char **argv, t_pipex *lst, t_cmd *cmd)
 	if (access(tmp[0], F_OK) > -1)
 		cmd->cmd = ft_strdup(tmp[0]);	
 	else
-	{
 		cmd->cmd = find_path(lst, tmp[0]);
-		if (!cmd->cmd)
-			ft_error(lst, ERR_INVALID_CMD);
-	}
-	if (!cmd->cmd)
+	if (!cmd->cmd)		
 	{
 		ft_array_clear(tmp);
 		ft_error(lst, ERR_MALLOC_FAIL);
@@ -61,10 +57,10 @@ char *find_path(t_pipex *lst, char *cmd)
 			ft_error(lst, ERR_MALLOC_FAIL);
 		if (access(res, F_OK | X_OK) > -1)
 			return (res);
-		free(res);
+		ft_free(res);
 		i++;
 	}
-	return (NULL);
+	return (cmd);
 }
 
 void	get_path(char **env, t_pipex *lst)

@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 16:37:39 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/05/18 23:24:24 by cchabeau         ###   ########.fr       */
+/*   Updated: 2023/05/19 00:09:57 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void		get_path(char **env, t_pipex *lst);
 void		parse_arg(char **argv, char **env, t_pipex *lst);
 char		*find_path(t_pipex *lst, char *cmd);
 void		exec(t_pipex *pipex, char **env);
+void		ft_free(void *ptr);
 
 #endif
