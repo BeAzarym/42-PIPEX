@@ -45,6 +45,7 @@ SRCS	=	ft_atoi.c \
 					ft_array_join.c \
 					ft_strjoin_array.c \
 					ft_arraylen.c \
+					ft_free.c \
 
 SRCS_BONUS = ft_lstnew_bonus.c \
 					ft_lstadd_front_bonus.c \

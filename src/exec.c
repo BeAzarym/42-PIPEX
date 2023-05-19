@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:55:06 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/05/19 00:18:32 by cchabeau         ###   ########.fr       */
+/*   Updated: 2023/05/19 13:40:01 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static int	exec_cmd2(t_pipex *pipex, char **env, int fd[2])
 void	exec(t_pipex *pipex, char **env)
 {
 	int	fd[2];
-	
 
 	if (pipe(fd) == -1)
 		ft_error(pipex, ERR_PIPE_FAILED);

@@ -6,13 +6,13 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 21:08:46 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/05/16 23:15:27 by cchabeau         ###   ########.fr       */
+/*   Updated: 2023/05/19 13:39:31 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char **ft_strjoin_arr(char *s1, char **arr, int size)
+char	**ft_strjoin_arr(char *s1, char **arr, int size)
 {
 	int		i;
 	int		j;

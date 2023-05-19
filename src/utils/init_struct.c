@@ -6,16 +6,16 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 20:36:32 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/05/16 16:23:40 by cchabeau         ###   ########.fr       */
+/*   Updated: 2023/05/19 13:39:12 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
-static t_cmd *init_cmd(void)
+static t_cmd	*init_cmd(void)
 {
 	t_cmd	*ptr;
-	
+
 	ptr = malloc(sizeof(t_cmd));
 	if (!ptr)
 		return (NULL);

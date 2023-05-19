@@ -6,25 +6,22 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:33:56 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/05/19 00:12:15 by cchabeau         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:23:41 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
-void	ft_free(void *ptr)
-{
-	free(ptr);
-	ptr = NULL;
-}
-
 static void	clear_cmd_struct(t_cmd *cmd)
 {
 	if (!cmd)
 		return ;
-	ft_free(cmd->cmd);
-	ft_free(cmd->path);
-	ft_array_clear(cmd->args);
+	if (cmd->cmd)
+		ft_free(cmd->cmd);
+	if (cmd->path)
+		ft_free(cmd->path);
+	if (cmd->args)
+		ft_array_clear(cmd->args);
 	ft_free(cmd);
 }
 

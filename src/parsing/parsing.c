@@ -6,24 +6,24 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:56:42 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/05/19 00:11:13 by cchabeau         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:29:34 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
-static t_cmd *parse_cmd(char **argv, t_pipex *lst, t_cmd *cmd)
+static t_cmd	*parse_cmd(char **argv, t_pipex *lst, t_cmd *cmd)
 {
-	char **tmp;
-	
+	char	**tmp;
+
 	tmp = ft_split(*argv, ' ');
 	if (!tmp)
 		ft_error(lst, ERR_MALLOC_FAIL);
 	if (access(tmp[0], F_OK) > -1)
-		cmd->cmd = ft_strdup(tmp[0]);	
+		cmd->cmd = ft_strdup(tmp[0]);
 	else
 		cmd->cmd = find_path(lst, tmp[0]);
-	if (!cmd->cmd)		
+	if (!cmd->cmd)
 	{
 		ft_array_clear(tmp);
 		ft_error(lst, ERR_MALLOC_FAIL);
@@ -34,17 +34,15 @@ static t_cmd *parse_cmd(char **argv, t_pipex *lst, t_cmd *cmd)
 		ft_array_clear(tmp);
 		ft_error(lst, ERR_MALLOC_FAIL);
 	}
-	ft_array_clear(tmp);
-	cmd->path = ft_strdup(cmd->cmd);
-	if (!cmd->path)
-		ft_error(lst, ERR_MALLOC_FAIL);
+	if (tmp)
+		ft_array_clear(tmp);
 	return (cmd);
 }
 
-char *find_path(t_pipex *lst, char *cmd)
+char	*find_path(t_pipex *lst, char *cmd)
 {
-	int i;
-	char *res;
+	int		i;
+	char	*res;
 
 	i = 0;
 	while (lst->paths[i])
@@ -60,7 +58,7 @@ char *find_path(t_pipex *lst, char *cmd)
 		ft_free(res);
 		i++;
 	}
-	return (cmd);
+	return (ft_strdup(cmd));
 }
 
 void	get_path(char **env, t_pipex *lst)
@@ -76,12 +74,11 @@ void	get_path(char **env, t_pipex *lst)
 			if (!lst->paths)
 				ft_error(lst, ERR_MALLOC_FAIL);
 			return ;
-		};
+		}
 		i++;
 	}
 	return ;
 }
-
 
 void	parse_arg(char **argv, char **env, t_pipex *lst)
 {

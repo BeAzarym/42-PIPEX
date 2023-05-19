@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 18:24:38 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/05/19 13:40:17 by cchabeau         ###   ########.fr       */
+/*   Created: 2023/05/19 13:52:24 by cchabeau          #+#    #+#             */
+/*   Updated: 2023/05/19 13:52:52 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "libft.h"
 
-int	main(int argc, char **argv, char **env)
+void	ft_free(void *ptr)
 {
-	t_pipex	*lst;
-
-	lst = NULL;
-	if (argc != 5)
-		return (1);
-	lst = init_struct(lst);
-	if (!lst)
-		ft_error(lst, ERR_MALLOC_FAIL);
-	parse_arg(argv, env, lst);
-	exec(lst, env);
-	ft_exit(lst);
-	return (0);
+	free(ptr);
+	ptr = NULL;
 }
